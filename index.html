@@ -1,0 +1,456 @@
+Отличный кадр с румяными лепёшками! Я установил ваше реальное фото в код сайта (как для карточки товара, так и для главного баннера и блока «О нас»).
+Чтобы фото отображалось правильно, сохраните картинку под именем lepreshki.jpg и положите её в ту же папку, где лежит файл index.html.
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тандырный Хлеб — Лепёшка с кунжутом из тандыра</title>
+    <style>
+        :root {
+            --primary: #c85a32;
+            --primary-hover: #b04b27;
+            --bg-color: #fdfbf7;
+            --card-bg: #ffffff;
+            --text-dark: #2c2c2c;
+            --text-muted: #666666;
+            --instagram-color: #e1306c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Навигация */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .instagram-link {
+            color: var(--instagram-color) !important;
+            font-weight: bold;
+        }
+
+        .cart-btn-nav {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cart-count {
+            background: white;
+            color: var(--primary);
+            border-radius: 50%;
+            padding: 0.1rem 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* Баннер */
+        .hero {
+            position: relative;
+            height: 420px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('lepreshki.jpg') center 30%/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Секции */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Карточка товара */
+        .single-product-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            padding-bottom: 1.5rem;
+        }
+
+        .card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .card-content {
+            padding: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0.5rem 0 1rem;
+        }
+
+        /* Корзина */
+        .cart-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cart-items {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin-bottom: 1.5rem;
+        }
+
+        .order-form input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        /* О нас */
+        .about-block {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .social-link {
+            color: #ffffff;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 0.3rem;
+            transition: color 0.2s;
+        }
+
+        .social-link:hover {
+            color: var(--instagram-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">🔥 Тандырный Хлеб</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Меню</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="https://www.instagram.com/bread_uzbek_samsa?igsh=ZjU2OHZzcXM4bjZr&igsi=ZjU2OHZzcXM4bjZr" target="_blank" class="instagram-link">📸 Instagram</a></li>
+                <li><a href="#cart" class="cart-btn-nav">🛒 Корзина <span class="cart-count" id="cart-count">0</span></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Горячие лепёшки из тандыра</h1>
+            <p>Выпекаем с любовью каждый день по традиционным рецептам</p>
+            <a href="#menu" class="btn">Заказать лепёшку</a>
+        </div>
+    </section>
+
+    <!-- Меню -->
+    <section id="menu" class="section">
+        <h2 class="section-title">Наше Меню</h2>
+        <div class="single-product-container">
+            <div class="card">
+                <img src="lepreshki.jpg" alt="Тандыр-наан с кунжутом">
+                <div class="card-content">
+                    <h3>Тандыр-наан с кунжутом</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Ароматная горячая лепёшка из глиняной печи, посыпанная черным и белым кунжутом.</p>
+                    <div class="price">85 ₴</div>
+                </div>
+                <div><button class="btn" onclick="addToCart('Тандыр-наан с кунжутом', 85)">В корзину</button></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Корзина -->
+    <section id="cart" class="section">
+        <h2 class="section-title">Ваш Заказ</h2>
+        <div class="cart-section">
+            <ul class="cart-items" id="cart-items">
+                <p style="text-align: center; color: var(--text-muted);">Корзина пока пуста</p>
+            </ul>
+            <div class="cart-total">Итого: <span id="cart-total">0</span> ₴</div>
+            <form class="order-form" onsubmit="submitOrder(event)">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <button type="submit" class="btn" style="width: 100%;">Оформить заказ</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section id="about" class="section" style="background-color: #f7f3ed; border-radius: 12px;">
+        <h2 class="section-title">Как мы готовим</h2>
+        <div class="about-block">
+            <img src="lepreshki.jpg" alt="Свежие лепёшки из тандыра" class="about-img">
+            <div class="about-text">
+                <h3>Только натуральные ингредиенты</h3>
+                <p style="margin-top: 1rem;">Мы используем только муку высшего сорта, воду, соль, дрожжи и ароматный кунжут. Никаких химических добавок и улучшителей вкуса.</p>
+                <p style="margin-top: 1rem;">Настоящий глиняный тандыр разогревается до 400°C, благодаря чему лепёшка запекается моментально, сохраняя хрустящую корочку и мягкий мякиш внутри.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer id="contacts">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Пекарня</h4>
+                <p>Свежий хлеб и лепёшки каждый день с 9:00 до 18:00.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <p>📍 Рынок Столичный, 10</p>
+                <p>📞 <a href="tel:+380661396200" style="color: white; text-decoration: none;">+380 (66) 139 62 00</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>Мы в соцсетях</h4>
+                <p><a href="https://www.instagram.com/bread_uzbek_samsa?igsh=ZjU2OHZzcXM4bjZr&igsi=ZjU2OHZzcXM4bjZr" target="_blank" class="social-link">📸 Instagram: @bread_uzbek_samsa</a></p>
+                <p><a href="viber://chat?number=%2B380661396200" class="social-link">💬 Viber: +380 (66) 139 62 00</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 Тандырный Хлеб. Все права защищены.
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(title, price) {
+            cart.push({ title, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartCount.textContent = cart.length;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Корзина пока пуста</p>';
+                cartTotal.textContent = 0;
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item) => {
+                total += item.price;
+                const li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML = `<span>${item.title}</span> <strong>${item.price} ₴</strong>`;
+                cartItemsContainer.appendChild(li);
+            });
+
+            cartTotal.textContent = total;
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            if (cart.length === 0) {
+                alert('Добавьте товар в корзину перед заказом!');
+                return;
+            }
+            alert('Спасибо за заказ! Мы свяжемся с вами по указанному номеру.');
+            cart = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>
+

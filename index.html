@@ -42,14 +42,33 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--primary);
             text-transform: uppercase;
+        }
+
+        .insta-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--instagram-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 6px 12px;
+            border: 1px solid var(--instagram-color);
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .insta-btn:hover {
+            background-color: var(--instagram-color);
+            color: white;
         }
 
         .hero {
@@ -153,6 +172,20 @@
             border: 1px solid #ccc;
             border-radius: 6px;
         }
+
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--instagram-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -160,6 +193,9 @@
     <header>
         <div class="nav-container">
             <div class="logo">🔥 Тандырный Хлеб</div>
+            <a href="https://www.instagram.com/bread_uzbek_samsa?igsh=ZjU2OHZzcXM4bjZr&igsi=ZjU2OHZzcXM4bjZr" target="_blank" class="insta-btn">
+                📸 Instagram
+            </a>
         </div>
     </header>
 
@@ -199,6 +235,16 @@
             </form>
         </div>
     </section>
+
+    <footer>
+        <p>Свежий хлеб и лепёшки каждый день!</p>
+        <p style="margin-top: 0.5rem;">
+            Мы в соцсетях: 
+            <a href="https://www.instagram.com/bread_uzbek_samsa?igsh=ZjU2OHZzcXM4bjZr&igsi=ZjU2OHZzcXM4bjZr" target="_blank">
+                @bread_uzbek_samsa
+            </a>
+        </p>
+    </footer>
 
     <script>
         const PRICE_PER_ITEM = 50;

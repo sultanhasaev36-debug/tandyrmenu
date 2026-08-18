@@ -99,7 +99,6 @@
         .card-content { padding: 1.2rem; }
         .price { font-size: 1.5rem; font-weight: bold; color: var(--primary); margin: 0.5rem 0; }
 
-        /* Выбор количества */
         .quantity-control {
             display: flex;
             align-items: center;
@@ -179,7 +178,6 @@
                 <h3>Тандыр-наан с кунжутом</h3>
                 <div class="price">50 ₴ / шт</div>
                 
-                <!-- Выбор количества -->
                 <div class="quantity-control">
                     <button class="qty-btn" onclick="changeQty(-1)">-</button>
                     <input type="number" id="quantity" class="qty-input" value="1" min="1" onchange="updateTotal()">
@@ -222,9 +220,8 @@
         async function sendToTelegram(event) {
             event.preventDefault();
             
-            // ВСТАВЬТЕ ВАШИ ДАННЫЕ СУДА:
-            const TELEGRAM_BOT_TOKEN = 'ВСТАВЬТЕ_ТОКЕН_БОТА';
-            const TELEGRAM_CHAT_ID = 'ВСТАВЬТЕ_ВАШ_CHAT_ID';
+            const TELEGRAM_BOT_TOKEN = '8743523337:AAFvvEhSq-TYJnRc8AN09eFFPxf-d5TXqmw';
+            const TELEGRAM_CHAT_ID = '8994223418';
 
             const name = document.getElementById('cust-name').value;
             const phone = document.getElementById('cust-phone').value;
@@ -232,8 +229,8 @@
             const total = qty * PRICE_PER_ITEM;
 
             const message = `🍞 *Новый заказ!*\n\n` +
-                            `👤 *Имя:* ${Sultan}\n` +
-                            `📞 *Телефон:* ${0661396200}\n` +
+                            `👤 *Имя:* ${name}\n` +
+                            `📞 *Телефон:* ${phone}\n` +
                             `🥖 *Количество:* ${qty} шт.\n` +
                             `💰 *Сумма:* ${total} ₴`;
 
@@ -242,7 +239,7 @@
             btn.textContent = 'Отправка...';
 
             try {
-                const response = await fetch(`https://api.telegram.org/bot${8743523337:AAFvvEhSq-TYJnRc8AN09eFFPxf-d5TXqmw}/sendMessage`, {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -259,7 +256,7 @@
                     document.getElementById('quantity').value = 1;
                     updateTotal();
                 } else {
-                    alert('Ошибка при отправке заказа. Попробуйте еще раз.');
+                    alert('Ошибка при отправке заказа. Убедитесь, что вы запустили бота командой /start в Telegram!');
                 }
             } catch (e) {
                 alert('Ошибка соединения.');
